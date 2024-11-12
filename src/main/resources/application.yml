@@ -1,0 +1,18 @@
+spring:
+  cloud:
+    routes:
+      - id: users-service
+        uri: http://localhost:8081/users
+        predicates:
+          - Path=/gateway/usuarios
+        filters:
+          - StripPrefix=1
+  application:
+    name: gateway
+  config:
+    activate:
+      on-profile: dev
+server:
+  port: 8082
+  servlet:
+    context-path: /gateway
