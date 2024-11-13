@@ -1,18 +1,29 @@
 spring:
   cloud:
-    routes:
-      - id: users-service
-        uri: http://localhost:8081/users
-        predicates:
-          - Path=/gateway/usuarios
-        filters:
-          - StripPrefix=1
+    gateway:
+      discovery:
+        locator:
+          enable: true
+          lower-case-service-id: true
   application:
     name: gateway
   config:
     activate:
       on-profile: dev
 server:
-  port: 8082
+  port: 8192
   servlet:
     context-path: /gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/discovery/eureka
+    fetch-registry: true
+    register-with-eureka: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
