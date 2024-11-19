@@ -24,7 +24,7 @@ spring:
   datasource:
     url:
 server:
-  port: 8192
+  port: ${PORT:8192}
   servlet:
     context-path: /gateway
 
