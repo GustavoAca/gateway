@@ -78,9 +78,6 @@
 		<repository>
 			<id>github</id>
 			<url>https://maven.pkg.github.com/GustavoAca/core</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
 		</repository>
 	</repositories>
 	<dependencyManagement>
