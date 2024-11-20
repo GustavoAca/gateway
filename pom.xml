@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.glaiss</groupId>
 	<artifactId>gateway</artifactId>
-	<version>0.0.1</version>
+	<version>0.1.0</version>
 	<name>gateway</name>
 	<description>Projeto de gerenciamento gateway</description>
 	<url/>
@@ -65,7 +65,7 @@
 		<dependency>
 			<groupId>com.glaiss</groupId>
 			<artifactId>core</artifactId>
-			<version>0.2.0-SNAPSHOT</version>
+			<version>0.1.0-SNAPSHOT</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
