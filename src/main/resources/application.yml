@@ -1,4 +1,9 @@
 spring:
+  application:
+    name: gateway
+  config:
+    activate:
+      on-profile: dev
   main:
     web-application-type: reactive
     allow-bean-definition-overriding: true
@@ -12,12 +17,15 @@ spring:
         locator:
           enable: true
           lower-case-service-id: true
-  application:
-    name: gateway
-  config:
-    activate:
-      on-profile: dev
+  jackson:
+    time-zone: America/Sao_Paulo
+  spring:
+    timezone: America/Sao_Paulo
   jpa:
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
     hibernate:
       ddl-auto: none
   autoconfigure:
