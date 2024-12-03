@@ -1,6 +1,5 @@
-package com.glaiss.gateway.config.route;
+package com.glaiss.gateway.config;
 
-import com.glaiss.gateway.config.security.AuthenticationFilter;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
@@ -13,8 +12,9 @@ public class GatewayRoutesConfig {
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
         return builder.routes()
                 .route(p -> p
-                        .path("/users/**")
-                        .filters(f -> f.filter(new AuthenticationFilter()))
+                        .path("/usuarios/login")
+                        .uri("lb://USERS"))
+                .route(p -> p.path("/usuarios")
                         .uri("lb://USERS"))
                 .build();
     }
