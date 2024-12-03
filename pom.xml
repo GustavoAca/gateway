@@ -55,21 +55,25 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>com.glaiss</groupId>
 			<artifactId>core</artifactId>
-            <version>0.2.0</version>
+			<version>0.4.0</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
 					<artifactId>spring-boot-starter-data-jpa</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.security.oauth.boot</groupId>
+					<artifactId>spring-security-oauth2-autoconfigure</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-security</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
@@ -88,12 +92,6 @@
 			<artifactId>spring-cloud-starter-loadbalancer</artifactId>
 		</dependency>
 	</dependencies>
-	<repositories>
-		<repository>
-			<id>github</id>
-			<url>https://maven.pkg.github.com/GustavoAca/core</url>
-		</repository>
-	</repositories>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
