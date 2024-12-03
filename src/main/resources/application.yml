@@ -1,6 +1,7 @@
 spring:
   application:
     name: gateway
+    version: @project.version@
   config:
     activate:
       on-profile: dev
@@ -8,6 +9,13 @@ spring:
     web-application-type: reactive
     allow-bean-definition-overriding: true
   cloud:
+    discovery:
+      enabled: true
+      eureka:
+        instance:
+          hostname: localhost
+    client:
+      hostname: localhost
     loadbalancer:
       enabled: true
       retry:
@@ -34,13 +42,11 @@ spring:
     url:
 server:
   port: ${PORT:8192}
-  servlet:
-    context-path: /gateway
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/discovery/eureka
+      defaultZone: http://localhost:8761/eureka
     fetch-registry: true
     register-with-eureka: true
 
