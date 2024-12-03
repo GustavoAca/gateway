@@ -1,6 +1,7 @@
 spring:
   application:
     name: gateway
+    version: @project.version@
   config:
     activate:
       on-profile: dev
@@ -8,6 +9,13 @@ spring:
     web-application-type: reactive
     allow-bean-definition-overriding: true
   cloud:
+    discovery:
+      enabled: true
+      eureka:
+        instance:
+          hostname: localhost
+    client:
+      hostname: localhost
     loadbalancer:
       enabled: true
       retry:
@@ -34,13 +42,11 @@ spring:
     url:
 server:
   port: ${PORT:8192}
-  servlet:
-    context-path: /gateway
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/discovery/eureka
+      defaultZone: http://localhost:8761/eureka
     fetch-registry: true
     register-with-eureka: true
 
@@ -63,3 +69,9 @@ jwt:
       MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhocpCKsOQEoButV4V76t0S2Vdd6iMUiud/q5Qvt/MQb9JoXWnx/rlYhVsyr20jrIEgfTGU51oJaGZRovAVNuQLF0VlK/bUu9a4Ce5PRAEeWPdTFrFEdxTIBdG0gsbZlb/SotY6jW+zI+wJI3Yl5Lm9+tHx
       LeCqCtLrXWCHngGnU9eLsEa1OR94aR9gcIuUJhu/QjSDbARjoNYv7FSnBFeXYqahcT3WGcos7M2RZh6SZnVlN7aZ+Ve1CVv5BCVJf7lwEpGEJjGtipx6XJoERO7jPhwie+dYmcpP4yTCvqGlTGPWyYPyi6QBZPznkcCKcqs2MPtXnNUm0PuLkyaMycvwIDAQAB
       -----END PUBLIC KEY-----
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.cloud.netflix.eureka: DEBUG
+    org.springframework.cloud.client.discovery: DEBUG
