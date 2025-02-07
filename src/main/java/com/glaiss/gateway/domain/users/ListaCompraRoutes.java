@@ -5,10 +5,10 @@ import com.glaiss.gateway.domain.Uri;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LocalRoutes extends RoutesAbstract {
-    private static final String path = "/locais";
+public class ListaCompraRoutes extends RoutesAbstract {
+    private static final String path = "/lista-compra";
 
-    protected LocalRoutes() {
-        super("locais", Uri.USERS);
+    protected ListaCompraRoutes() {
+        super("lista-compra", Uri.USERS);
     }
 }
