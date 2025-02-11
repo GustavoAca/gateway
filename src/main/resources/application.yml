@@ -74,15 +74,12 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+
 ---
 spring:
   config:
     activate:
       on-profile: prod
-  eureka:
-    client:
-      service-url:
-        defaultZone: ${URL_DISCOVERY}
   cloud:
     discovery:
       eureka:
@@ -90,5 +87,9 @@ spring:
           hostname: prod-hostname
     client:
       hostname: prod-hostname
+eureka:
+  client:
+    service-url:
+      defaultZone: ${URL_DISCOVERY}
 server:
   port: ${PORT}
