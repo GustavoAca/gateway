@@ -82,7 +82,7 @@ spring:
   eureka:
     client:
       service-url:
-        defaultZone: ${URL_DISCOVERY}/eureka
+        defaultZone: ${URL_DISCOVERY}
   cloud:
     discovery:
       eureka:
