@@ -74,6 +74,8 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+logstash:
+  destination: localhost:5000
 ---
 spring:
   config:
@@ -92,3 +94,5 @@ eureka:
       defaultZone: ${URL_DISCOVERY}
 server:
   port: ${PORT}
+logstash:
+  destination: ${LOGSTASH}
