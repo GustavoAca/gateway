@@ -13,17 +13,18 @@ public class UsuarioRoutes extends RoutesAbstract {
     }
 
     @Override
-    protected void adicionarRoutes(RouteLocatorBuilder.Builder routes) {
+    public void defineRoutes(RouteLocatorBuilder.Builder routes) {
+        super.defineRoutes(routes);
         routes
-                .route("usuarios-login", route -> route
+                .route(getPath(), route -> route
                         .path("/usuarios/login")
-                        .filters(f -> f.rewritePath("/(?<segment>.*)", String.format("/%s/${segment}", this.uri.getContextPath())))
-                        .uri("lb://USERS")
+                        .filters(f -> f.rewritePath("/(?<segment>.*)", reescreverPath()))
+                        .uri(formatarUri())
                 )
-                .route("usuarios-cadastrar", route -> route
+                .route(getPath(), route -> route
                         .path("/usuarios/cadastrar")
-                        .filters(f -> f.rewritePath("/(?<segment>.*)", String.format("/%s/${segment}", this.uri.getContextPath())))
-                        .uri("lb://USERS")
-                );
+                        .filters(f -> f.rewritePath("/(?<segment>.*)", reescreverPath()))
+                        .uri(formatarUri())
+                ).build();
     }
 }

@@ -14,14 +14,23 @@ public abstract class RoutesAbstract implements RouteDefinition {
 
     @Override
     public void defineRoutes(RouteLocatorBuilder.Builder routes) {
-        routes.route(p ->
-                p.path(String.format("/%s/**", this.path))
-                        .filters(f -> f.rewritePath("/(?<segment>.*)", String.format("/%s/${segment}", this.uri.getContextPath())))
-                        .uri(String.format("lb://%s", this.uri.name())));
-        adicionarRoutes(routes);
+        routes.route(getPath(), p ->
+                p.path(getPath())
+                        .filters(f ->
+                                f.rewritePath("/(?<segment>.*)", reescreverPath()))
+                        .uri(formatarUri()));
         routes.build();
     }
 
-    protected void adicionarRoutes(RouteLocatorBuilder.Builder routes) {
+    public String getPath() {
+        return String.format("/%s/**", this.path);
+    }
+
+    public String reescreverPath() {
+        return String.format("/%s/${segment}", this.uri.getContextPath());
+    }
+
+    public String formatarUri() {
+        return String.format("lb://%s", this.uri.name());
     }
 }

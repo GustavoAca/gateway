@@ -24,14 +24,14 @@ public class NotificacaoEmailRoutes extends RoutesAbstract {
     @Override
     public void defineRoutes(RouteLocatorBuilder.Builder routes) {
         Header header = new Header("X-CHAVE-DE-ACESSO", headerValue);
-        routes.route(p ->
-                p.path(String.format("/%s/**", this.path))
+        routes.route(getPath(), p ->
+                p.path(getPath())
                         .filters(f ->
                                 f
-                                        .rewritePath("/(?<segment>.*)", String.format("/%s/${segment}", this.uri.getContextPath()))
+                                        .rewritePath("/(?<segment>.*)", reescreverPath())
                                         .filter(customHeaderFilter.apply(header))
                         )
-                        .uri(String.format("lb://%s", this.uri.name())));
+                        .uri(formatarUri()));
         routes.build();
     }
 }
