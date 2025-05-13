@@ -57,7 +57,7 @@
 		<dependency>
 			<groupId>com.glaiss</groupId>
 			<artifactId>core</artifactId>
-			<version>0.13.0</version>
+            <version>0.14.0</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
@@ -87,6 +87,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
 
 	</dependencies>
 	<repositories>

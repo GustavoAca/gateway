@@ -39,6 +39,8 @@ spring:
     url:
 server:
   port: ${PORT:8192}
+  servlet:
+    context-path: /gateway
 
 eureka:
   client:
@@ -57,6 +59,11 @@ management:
         enabled: true
         url: http://localhost:9411/api/v2/spans
 
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    reactor.netty.http.client: DEBUG
+
 jwt:
   public:
     key: |
@@ -65,6 +72,9 @@ jwt:
       LeCqCtLrXWCHngGnU9eLsEa1OR94aR9gcIuUJhu/QjSDbARjoNYv7FSnBFeXYqahcT3WGcos7M2RZh6SZnVlN7aZ+Ve1CVv5BCVJf7lwEpGEJjGtipx6XJoERO7jPhwie+dYmcpP4yTCvqGlTGPWyYPyi6QBZPznkcCKcqs2MPtXnNUm0PuLkyaMycvwIDAQAB
       -----END PUBLIC KEY-----
 
+security:
+  notification:
+    api-key: gateway-api-key
 ---
 spring:
   config:
@@ -73,7 +83,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://localhost:8761/discovery/eureka
 logstash:
   destination: localhost:5000
 ---

@@ -26,6 +26,7 @@ public class SecurityConfig {
                         .pathMatchers("/actuator/**").permitAll()
                         .pathMatchers("/usuarios/login").permitAll()
                         .pathMatchers("/usuarios/cadastrar").permitAll()
+                        .pathMatchers("/notificacao-por-email/**").permitAll()
                         .anyExchange().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2

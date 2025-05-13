@@ -14,11 +14,16 @@ public class UsuarioRoutes extends RoutesAbstract {
 
     @Override
     protected void adicionarRoutes(RouteLocatorBuilder.Builder routes) {
-        routes.route(p ->
-                        p.path(String.format("/%s/login", this.path))
-                                .uri(String.format("lb://%s", this.uri)))
-                .route(p ->
-                        p.path(String.format("/%s/cadastrar", this.path))
-                                .uri(String.format("lb://%s", this.uri)));
+        routes
+                .route("usuarios-login", route -> route
+                        .path("/usuarios/login")
+                        .filters(f -> f.rewritePath("/(?<segment>.*)", String.format("/%s/${segment}", this.uri.getContextPath())))
+                        .uri("lb://USERS")
+                )
+                .route("usuarios-cadastrar", route -> route
+                        .path("/usuarios/cadastrar")
+                        .filters(f -> f.rewritePath("/(?<segment>.*)", String.format("/%s/${segment}", this.uri.getContextPath())))
+                        .uri("lb://USERS")
+                );
     }
 }

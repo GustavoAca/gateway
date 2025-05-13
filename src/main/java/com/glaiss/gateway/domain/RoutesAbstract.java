@@ -16,10 +16,10 @@ public abstract class RoutesAbstract implements RouteDefinition {
     public void defineRoutes(RouteLocatorBuilder.Builder routes) {
         routes.route(p ->
                 p.path(String.format("/%s/**", this.path))
+                        .filters(f -> f.rewritePath("/(?<segment>.*)", String.format("/%s/${segment}", this.uri.getContextPath())))
                         .uri(String.format("lb://%s", this.uri.name())));
         adicionarRoutes(routes);
         routes.build();
-
     }
 
     protected void adicionarRoutes(RouteLocatorBuilder.Builder routes) {
