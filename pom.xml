@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.glaiss</groupId>
 	<artifactId>gateway</artifactId>
-	<version>0.14.0</version>
+	<version>0.15.0</version>
 	<name>gateway</name>
 	<description>Projeto de gerenciamento gateway</description>
 	<url/>
