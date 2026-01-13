@@ -6,10 +6,10 @@ import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UsuarioRoutes extends RoutesAbstract {
+public class OauthRoutes extends RoutesAbstract {
 
-    protected UsuarioRoutes() {
-        super("usuarios", Uri.USERS);
+    protected OauthRoutes() {
+        super("oauth", Uri.USERS);
     }
 
     @Override
@@ -17,17 +17,12 @@ public class UsuarioRoutes extends RoutesAbstract {
         super.defineRoutes(routes);
         routes
                 .route(getPath(), route -> route
-                        .path("/usuarios/login")
+                        .path("/oauth/github")
                         .filters(f -> f.rewritePath("/(?<segment>.*)", reescreverPath()))
                         .uri(formatarUri())
                 )
                 .route(getPath(), route -> route
-                        .path("/usuarios/cadastrar")
-                        .filters(f -> f.rewritePath("/(?<segment>.*)", reescreverPath()))
-                        .uri(formatarUri())
-                )
-                .route(getPath(), route -> route
-                        .path("/usuarios/atualizar-token")
+                        .path("/oauth/google")
                         .filters(f -> f.rewritePath("/(?<segment>.*)", reescreverPath()))
                         .uri(formatarUri())
                 ).build();
