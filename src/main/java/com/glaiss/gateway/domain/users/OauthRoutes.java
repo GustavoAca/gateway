@@ -25,6 +25,11 @@ public class OauthRoutes extends RoutesAbstract {
                         .path("/oauth/google")
                         .filters(f -> f.rewritePath("/(?<segment>.*)", reescreverPath()))
                         .uri(formatarUri())
+                )
+                .route(getPath(), route -> route
+                        .path("/oauth/login")
+                        .filters(f -> f.rewritePath("/oauth/login", "/users/usuarios/login"))
+                        .uri(formatarUri())
                 ).build();
     }
 }
