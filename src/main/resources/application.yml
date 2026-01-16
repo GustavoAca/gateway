@@ -61,8 +61,24 @@ management:
 
 logging:
   level:
-    org.springframework.cloud.gateway: DEBUG
-    reactor.netty.http.client: DEBUG
+    root: WARN
+
+    # Spring
+    org.springframework: WARN
+    org.springframework.web: WARN
+    org.springframework.boot: WARN
+    org.springframework.security: WARN
+
+    # Hibernate / JPA
+    org.hibernate: WARN
+    org.hibernate.SQL: OFF
+    org.hibernate.type.descriptor.sql: OFF
+
+    # Infra
+    org.apache: WARN
+    reactor.netty: WARN
+
+    com.glaiss: INFO
 
 jwt:
   public:
