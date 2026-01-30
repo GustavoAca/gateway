@@ -137,3 +137,7 @@ logstash:
 security:
   notification:
     api-key: ${CHAVE_API_KEY}
+
+jwt:
+  public:
+    key: ${PUBLIC_KEY}
