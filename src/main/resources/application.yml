@@ -97,7 +97,7 @@ security:
   notification:
     api-key: gateway-api-key
 
-servico-frontend: ${SERVICO-FRONTEND}
+servico-frontend: ${SERVICO-FRONTEND:http://localhost:4200,http://localhost:4201}
 ---
 spring:
   config:
